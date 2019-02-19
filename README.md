@@ -114,3 +114,9 @@ val object = Gson().fromJson(
                     kotliny["data"].element(),
                     SomeObject::class.java)
 ```
+
+<br/>
+
+## License
+
+MIT License.
