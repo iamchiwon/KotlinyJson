@@ -46,7 +46,7 @@ val jsonString = """
 
 val jsonObject = JsonParser().parse(jsonString).asJsonObject
 
-val kotlinyJson = jsonObject.totoKotlinyJson()
+val kotlinyJson = jsonObject.toKotlinyJson()
 
 ```
 
@@ -56,7 +56,7 @@ val kotlinyJson = jsonObject.totoKotlinyJson()
 val name = kotlinyJson["name"].asStringValue()
 val start = kotlinyJson["star"].asIntValue()
 
-val name2 = kotlinyJson["name"].asString()
+val name2: String? = kotlinyJson["name"].asString()
 val start2: Int? = kotlinyJson["star"].asInt()
 ```
 
@@ -79,6 +79,7 @@ val kotliny = KotlinyJson.parse(json)
 
 val level = kotliny["foo"]["bar"]["level"].asIntValue() // 5
 val fake = kotliny["foo"]["bar"]["fake"].asInt() // null
+val fake2 = kotliny["foo"]["bar"]["fake"].asIntValue() // 0
 ```
 
 Array
@@ -110,9 +111,7 @@ val foos = kotliny["bar"]
 Decode using GSon
 
 ```kotlin
-val object = Gson().fromJson(
-                    kotliny["data"].element(),
-                    SomeObject::class.java)
+val object = Gson().fromJson(kotliny["data"].element(), SomeObject::class.java)
 ```
 
 <br/>
