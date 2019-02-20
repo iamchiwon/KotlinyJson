@@ -82,6 +82,20 @@ val fake = kotliny["foo"]["bar"]["fake"].asInt() // null
 val fake2 = kotliny["foo"]["bar"]["fake"].asIntValue() // 0
 ```
 
+Optional
+
+```kotlin
+val json = """
+{
+    "foo": 5
+}
+"""
+
+val kotliny = KotlinyJson.parse(json)
+
+val foo = kotliny["star"].asInt() ?: kotliny["foo"].asInt() ?: 0
+```
+
 Array
 
 ```kotlin
@@ -99,12 +113,12 @@ val kotliny = KotlinyJson.parse(json)
 
 val bars = kotliny["foo"]
                 .asArray()
-                .map { it["name"] }
+                .map { it["name"].stringValue() }
 //["bar1", "bar2", "bar3"]
 
 val foos = kotliny["bar"]
                 .asArray()
-                .map { it["name"] }
+                .map { it["name"].stringValue() }
 //[]
 ```
 
