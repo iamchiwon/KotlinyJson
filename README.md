@@ -2,6 +2,8 @@
 
 Convenience JSON handler inspired [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
 
+<br/>
+
 ## Installation
 
 ```
@@ -12,6 +14,7 @@ Just copy file : KotlinyJson.kt
 
 * `implementation 'com.google.code.gson:gson:2.8.5'`
 
+<br/>
 
 ## Create Instance
 
@@ -49,6 +52,8 @@ val jsonObject = JsonParser().parse(jsonString).asJsonObject
 val kotlinyJson = jsonObject.toKotlinyJson()
 
 ```
+
+<br/>
 
 ## Get values manually
 
@@ -104,7 +109,7 @@ val json = """
     "foo": [
         { "name": "bar1" },
         { "name": "bar2" },
-        { "name": "bar3" },
+        { "name": "bar3" }
     ]
 }
 """
@@ -113,12 +118,12 @@ val kotliny = KotlinyJson.parse(json)
 
 val bars = kotliny["foo"]
                 .asArray()
-                .map { it["name"].stringValue() }
+                .map { it["name"].asStringValue() }
 //["bar1", "bar2", "bar3"]
 
 val foos = kotliny["bar"]
                 .asArray()
-                .map { it["name"].stringValue() }
+                .map { it["name"].asStringValue() }
 //[]
 ```
 
